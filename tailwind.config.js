@@ -5,36 +5,81 @@ module.exports = {
     './src/components/**/*.{ts,tsx}',
     './src/lib/**/*.{ts,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        luxe: {
-          DEFAULT: '#f5f5f7',      // ivory white
-          gold: '#e0c48f',         // muted luxury gold
-          steel: '#1a1b26',        // executive blue-black
-          accent: '#8aacc8',       // cool chromatic highlight
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
         },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'var(--secondary-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--accent)',
+          foreground: 'var(--accent-foreground)',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'var(--muted-foreground)',
+        },
+        success: 'var(--success)',
+        warning: 'var(--warning)',
+        error: 'var(--error)',
       },
       fontFamily: {
-        geist: ['"Geist"', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'Menlo', 'Monaco', 'monospace'],
       },
       boxShadow: {
-        luxe: '0 8px 20px rgba(0,0,0,0.3)',
+        'sm': 'var(--shadow-sm)',
+        'md': 'var(--shadow-md)',
+        'lg': 'var(--shadow-lg)',
+        'xl': 'var(--shadow-xl)',
       },
       animation: {
-        shimmer: 'shimmer 1.5s infinite linear',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-in': 'slideIn 0.3s ease-out',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'shimmer': 'shimmer 1.5s infinite linear',
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideIn: {
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        pulse: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
         shimmer: {
           '0%': { backgroundPosition: '-1000px 0' },
           '100%': { backgroundPosition: '1000px 0' },
         },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
       },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require('tailwindcss-animate'),
   ],
 }
